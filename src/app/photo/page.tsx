@@ -1,13 +1,13 @@
 "use client";
 import { NextPage } from "next";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import PhotoCard from "@/components/photoCard/PhotoCard";
 
 const Page: NextPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("Все");
-  const [categories, setCategories] = useState([]);
-  const [data, setData] = useState(["Все"]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [data, setData] = useState([]);
 
   const filteredPhotos = selectedCategory === "Все" ? data : data.filter((photo) => photo.category === selectedCategory);
 
@@ -15,8 +15,9 @@ const Page: NextPage = () => {
     const response = await fetch("http://localhost:5500/photos");
     const data = await response.json();
     setData(data);
-    const categories = data.map((elem) => elem.category);
-    setCategories(["Все", ...categories]);
+
+    const uniqueCategories = Array.from(new Set(data.map((elem) => elem.category)));
+    setCategories(["Все", ...uniqueCategories]);
   };
 
   useEffect(() => {

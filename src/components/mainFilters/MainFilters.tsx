@@ -54,7 +54,9 @@ const MainFilters: NextPage = () => {
         {filteredData.map((elem, index) => (
           <div className={s.MainFilters__news__card} key={index}>
             <img className={s.MainFilters__news__card__image} src={elem.url} />
-            <p className={s.MainFilters__news__card__text}>{elem.text}</p>
+            <p className={s.MainFilters__news__card__text} style={{ fontWeight: "600" }}>
+              {elem.title}
+            </p>
           </div>
         ))}
       </div>

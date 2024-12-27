@@ -1,0 +1,22 @@
+.Footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  margin: 60px 0px 10px 0px;
+  background-color: rgb(20, 20, 20);
+  border-radius: 20px;
+
+  &__logo {
+    color: #ffffff;
+    font-size: 32px;
+  }
+
+  &__socials {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
+}

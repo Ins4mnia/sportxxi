@@ -46,21 +46,12 @@ const Page: NextPage<Props> = ({}) => {
 
   const addArticle = async (title, subtitle, author, text) => {
     try {
-      // Разбиваем текст на абзацы
-      const paragraphs = text
-        .split("\n")
-        .filter((line) => line.trim() !== "") // Убираем пустые строки
-        .map((line) => `<p>${line.trim()}</p>`); // Обрезаем пробелы и оборачиваем в <p>
-
-      // Объединяем абзацы в единую строку
-      const formattedText = paragraphs.join("");
-
       const response = await fetch("http://localhost:5500/articles/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, subtitle, author, text: formattedText }),
+        body: JSON.stringify({ title, subtitle, author, text }),
       });
 
       if (response.ok) {
@@ -198,7 +189,7 @@ const Page: NextPage<Props> = ({}) => {
           </div>
           <div className={s.Page__block__wrapper__input}>
             <p>Текст статьи</p>
-            <input placeholder="text" className={s.Page__block__input} value={articleText} onChange={(e) => setArticleText(e.target.value)} />
+            <textarea value={articleText} onChange={(e) => setArticleText(e.target.value)} placeholder="Введите текст статьи" />
           </div>
           <button className={s.Page__block__button} onClick={() => addArticle(articleTitle, articleSubtitle, articleAuthor, articleText)}>
             Добавить запись

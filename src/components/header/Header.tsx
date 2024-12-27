@@ -40,10 +40,10 @@ const Header: NextPage = () => {
       </nav>
 
       <div className={s.Header__socials}>
-        <Link href={"/"}>
+        <Link href={"https://www.youtube.com/"}>
           <Image src={"/HeaderIcon1.svg"} width={34} height={34} alt="YouTube" />
         </Link>
-        <Link href={"/"}>
+        <Link href={"https://telegram.org/"}>
           <Image src={"/HeaderIcon2.svg"} width={34} height={34} alt="Telegram" />
         </Link>
       </div>
